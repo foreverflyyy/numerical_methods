@@ -1,5 +1,7 @@
 import math
 
+# Численные методы решения
+
 
 def format(number):
     return "{:.8f}".format(number)

@@ -2,23 +2,23 @@ import math
 
 
 def f(x):
-    return math.sin(x)
+    return math.log10(x)
 
 
 def df(x):
-    return math.cos(x)
+    return 1 / (math.log(10) * x)
 
 
 def f2(x):
-    return math.sin(x / 2)
+    return 3 ** (x / 2)
 
 
 def df2(x):
-    return math.cos(x / 2) / 2
+    return (math.log(3) * 3 ** (x / 2)) / 2
 
 
 def d2f2(x):
-    return (-math.sin(x / 2)) / 4
+    return ((math.log(3) ** 2) * 3 ** (x / 2)) / 4
 
 
 def leftD(x, dx, func):
@@ -95,24 +95,25 @@ def task2(xk, n, m):
     task1_2(xk, yk, m, 0, n - 1, f2)
 
 
-print("Task 1_1")
-xk = [1.0, 1.05, 1.1, 1.15]
-yk = [0.84147, 0.86742, 0.89121, 0.91276]
-x = 1.04
-task1_1(xk, yk, x)
+if __name__ == "__main__":
+    print("Task 1_1")
+    xk = [8.1, 8.5, 8.9, 9.3]
+    yk = [0.908, 0.929, 0.949, 0.968]
+    x = 8.4
+    task1_1(xk, yk, x)
 
-print("Task 1_2")
-xk = [1.0, 1.08, 1.2, 1.27, 1.31, 1.38]
-yk = [f(x) for x in xk]
-x = 1.04
-task1_2(xk, yk, x, 0, 5, f)
+    print("Task 1_2")
+    xk = [1.0, 1.08, 1.2, 1.27, 1.31, 1.38]
+    yk = [f(x) for x in xk]
+    x = 1.032
+    task1_2(xk, yk, x, 0, 5, f)
 
-print("Task 2")
-xk = []
-a, b, m = 0, 1, 0.06
-n = 5
-for i in range(n):
-    xk.append(a + i * (b - a) / (n - 1))
-xk.append(m)
-xk.sort()
-task2(xk, n + 1, m)
+    print("Task 2")
+    xk = []
+    a, b, m = 5.4, 6, 5.6
+    n = 5
+    for i in range(n):
+        xk.append(a + i * (b - a) / (n - 1))
+    xk.append(m)
+    xk.sort()
+    task2(xk, n + 1, m)
